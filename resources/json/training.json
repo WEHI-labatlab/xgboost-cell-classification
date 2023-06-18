@@ -1,0 +1,59 @@
+{
+    "RUN_NAME": "",
+    "INPUT_FILE": "",
+    "LABELS_FILE": "",
+    "OUTPUT_FOLDER": "",
+    "PREPROCESS_SCHEME": "poly",
+    "CLASSIFIER": "Xgboost",
+    "MODEL_OPTIONS": {
+        "CLASSIFIER_OPTIONS": {
+            "N_JOBS_MODEL": 14,
+            "OBJECTIVE_FUNC": "multi:softprob"
+        },
+        "BALANCE_SCHEME": "SMOTE",
+        "BAYESCV_OPTIONS": {
+            "N_JOBS": 4,
+            "ITERATIONS": 5,
+            "SCORING": "balanced_accuracy"
+        },
+        "SPLIT_RANDOM_STATE": 42,
+        "TEST_SIZE": 0.2
+    },
+    "PREPROCESS_OPTIONS": {
+        "degree": 2,
+        "interaction_only": true,
+        "combinations": {
+            "CD4 T cells": [
+                "CD4: Cell: Mean",
+                "CD3: Cell: Mean",
+                "CD45RO: Cell: Mean",
+                "Foxp3: Cell: Mean"
+            ],
+            "CD8 T cells": [
+                "CD8a: Cell: Mean",
+                "CD3: Cell: Mean",
+                "CD45RO: Cell: Mean"
+            ],
+            "Macrophages": [
+                "CD68: Cell: Mean",
+                "CD16: Cell: Mean",
+                "CD14: Cell: Mean",
+                "MHC II (HLA-DR): Cell: Mean",
+                "CD163: Cell: Mean",
+                "CD206: Cell: Mean"
+            ],
+            "Dendritic cells": [
+                "CD11c: Cell: Mean",
+                "CD16: Cell: Mean",
+                "CD14: Cell: Mean",
+                "MHC II (HLA-DR): Cell: Mean",
+                "CD103: Cell: Mean"
+            ],
+            "Granulocytes": [
+                "CD66b: Cell: Mean",
+                "CD14: Cell: Mean",
+                "CD16: Cell: Mean"
+            ]
+        }
+    }
+}
