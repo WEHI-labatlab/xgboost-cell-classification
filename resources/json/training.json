@@ -1,5 +1,5 @@
 {
-    "RUN_NAME": "",
+    "RUN_NAME": "test_run",
     "INPUT_FILE": "",
     "LABELS_FILE": "",
     "OUTPUT_FOLDER": "/home/users/allstaff/yokote.k/xgboost/resources/output/",
@@ -9,7 +9,7 @@
             "N_JOBS_MODEL": 14,
             "OBJECTIVE_FUNC": "multi:softprob"
         },
-        "BALANCE_SCHEME": "SMOTE",
+        "BALANCE_SCHEME": null,
         "BAYESCV_OPTIONS": {
             "N_JOBS": 4,
             "ITERATIONS": 5,
@@ -18,7 +18,7 @@
         "SPLIT_RANDOM_STATE": 42,
         "TEST_SIZE": 0.2
     },
-    "PREPROCESS_SCHEME": "poly",
+    "PREPROCESS_SCHEME": null,
     "PREPROCESS_OPTIONS": {
         "degree": 2,
         "interaction_only": true,

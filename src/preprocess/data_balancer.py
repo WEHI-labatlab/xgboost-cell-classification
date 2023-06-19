@@ -1,7 +1,7 @@
 
 from imblearn.over_sampling import SMOTE, ADASYN
-from imblearn.under_sampling import TomekLinks, EditedNearestNeighbours
-from imblearn.combine import SMOTEENN
+from imblearn.under_sampling import TomekLinks, EditedNearestNeighbours, RandomUnderSampler
+from imblearn.combine import SMOTEENN, SMOTETomek
 import pandas as pd
 
 class DataBalancer:
@@ -14,7 +14,9 @@ class DataBalancer:
                             "SMOTEENN" : SMOTEENN(random_state=self.random_state),
                             "ADASYN" : ADASYN(random_state=self.random_state),
                             "TOMEK" : TomekLinks(), 
-                            "ENN" :  EditedNearestNeighbours()
+                            "SMOTETOMEK" : SMOTETomek(), 
+                            "ENN" :  EditedNearestNeighbours(),
+                            "RUS" : RandomUnderSampler()
                             }
 
 

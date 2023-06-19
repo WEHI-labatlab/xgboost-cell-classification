@@ -43,6 +43,11 @@ if __name__ == '__main__':
     preprocess_scheme = run_options["PREPROCESS_SCHEME"]
     preprocess_options = run_options["PREPROCESS_OPTIONS"]
 
+    # if a threshold has been defined, use it
+    try: 
+        threshold = run_options["THRESHOLD"]
+    except:
+        threshold = None
 
     # read the data
     print("INFO: Reading the data")
@@ -60,10 +65,17 @@ if __name__ == '__main__':
                                 args=preprocess_options)
 
     # apply the model
-    print("INFO: Predicting the labels")
-    pd.DataFrame(model.predict(X)).to_csv(output_file)
-    print("INFO: Finished")
-
+    if threshold is None:
+        print("INFO: Predicting the labels")
+        pd.DataFrame(model.predict(X)).to_csv(output_file)
+        print("INFO: Finished")
+    else:
+        print("INFO: Predicting the labels using threshold")
+        probs_df = pd.DataFrame(model.predict_proba(X))
+        labels = probs_df.iloc[:, 1] > threshold
+        labels = labels.astype(int)
+        labels.to_csv(output_file)
+        print("INFO: Finished")
 
 
 

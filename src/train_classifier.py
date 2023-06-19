@@ -1,7 +1,6 @@
 """
 Author: YOKOTE Kenta
 Aim: To run the XGBoost classifier on labelled cell data on SLURM
-
     Takes 8 inputs from STDIN:
         1. run_name: name of the run. The outputs will be saved to a folder
                      which has this as the name
@@ -34,8 +33,6 @@ if __name__ == '__main__':
     input_file = run_options["INPUT_FILE"]
     # Get the labels file
     labels_file = run_options["LABELS_FILE"]
-    # Weights file
-    weights_file = run_options["WEIGHTS_FILE"]
 
     # Get the output folder
     output_folder = run_options["OUTPUT_FOLDER"]
@@ -46,6 +43,9 @@ if __name__ == '__main__':
 
     # model options
     model_options = run_options["MODEL_OPTIONS"]
+
+    # classifier
+    classifier_scheme = run_options["CLASSIFIER"]
 
     # Save preprocessed data
     try:
@@ -61,14 +61,8 @@ if __name__ == '__main__':
     # Read the data
     print("INFO: Loading data")
     print("INFO: Measurement file: {}".format(input_file))
-    print("INFO: Labels file     : {}".format(labels_file))
-    print("INFO: Weights file    : {}".format(weights_file))
     X = pd.read_csv(input_file)
     y = pd.read_csv(labels_file)
-    if weights_file is not None:
-        weights = pd.read_csv(weights_file)
-    else:
-        weights = None
 
     # Preprocess
     print("INFO: Preprocessing")
@@ -82,12 +76,12 @@ if __name__ == '__main__':
     # Tune the hyperparameters 
     print("INFO: Tuning hyperparameters")
     classifier_applier = ClassifierInitialiser()
-    classifier_applier.tune_hyper_parameter(X, y, weights, model_options) 
+    classifier_applier.tune_hyper_parameter(X, y, classifier_scheme, model_options) 
 
     # get predictions
     print("INFO: Save the predictions")
     classifier_applier.get_prediction_df().to_csv(full_output_directory + "y_predicted.csv", index=False)
-    classifier_applier.y_train.to_csv(full_output_directory + "y_train.csv", index=False)
+    classifier_applier.y_train_orig.to_csv(full_output_directory + "y_train.csv", index=False)
     classifier_applier.y_test.to_csv(full_output_directory + "y_test.csv", index=False)
 
     # Save the outputs 
