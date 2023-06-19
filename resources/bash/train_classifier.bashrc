@@ -7,8 +7,8 @@
 #SBATCH --mail-type=begin        # send email when job begins
 #SBATCH --mail-type=end          # send email when job ends
 #SBATCH --mail-user=<your username>@wehi.edu.au
-#SBATCH --output /home/users/allstaff/<your username>/xgboost/resources/output/slurm-output/%N_%j.out
+#SBATCH --output /home/users/allstaff/<your username>/xgboost-cell-classification/resources/slurm-output/%N_%j.out
 
 module load anaconda3
 conda activate xgboost-cell-classification
-python /home/users/allstaff/<your username>/xgboost-cell-classification/src/train_classifier.py /home/users/allstaff/<your username>/xgboost-cell-classification/resources/training.json
+python /home/users/allstaff/<your username>/xgboost-cell-classification/src/train_classifier.py /home/users/allstaff/<your username>/xgboost-cell-classification/resources/json/training.json
