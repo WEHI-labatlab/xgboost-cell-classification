@@ -1,0 +1,48 @@
+{
+    "RUN_NAME": "",
+    "INPUT_FILE": "",
+    "OUTPUT_FILE": "",
+    "INPUT_MODEL": "/path/to/final_model.sav", 
+    "PREPROCESS_SCHEME": "poly",
+    "PREPROCESS_OPTIONS": {
+        "degree": 2,
+        "interaction_only": true,
+        "combinations": {
+            "CD4 T cells": [
+                "CD4",
+                "CD3",
+                "CD45RO",
+                "Foxp3"
+            ],
+            "CD8 T cells": [
+                "CD8a",
+                "CD3",
+                "CD45RO"
+            ],
+            "Macrophages": [
+                "CD68",
+                "CD16",
+                "CD14",
+                "MHC II (HLA-DR)",
+                "CD163",
+                "CD206"
+            ],
+            "Dendritic cells": [
+                "CD11c",
+                "CD16",
+                "CD14",
+                "MHC II (HLA-DR)",
+                "CD103"
+            ],
+            "yd T cells": [
+                "dTCR",
+                "CD3"
+            ],
+            "Granulocytes": [
+                "CD66b",
+                "CD14",
+                "CD16"
+            ]
+        }
+    }
+}

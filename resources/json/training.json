@@ -2,8 +2,7 @@
     "RUN_NAME": "",
     "INPUT_FILE": "",
     "LABELS_FILE": "",
-    "OUTPUT_FOLDER": "",
-    "PREPROCESS_SCHEME": "poly",
+    "OUTPUT_FOLDER": "/home/users/allstaff/yokote.k/xgboost/resources/output/",
     "CLASSIFIER": "Xgboost",
     "MODEL_OPTIONS": {
         "CLASSIFIER_OPTIONS": {
@@ -19,6 +18,7 @@
         "SPLIT_RANDOM_STATE": 42,
         "TEST_SIZE": 0.2
     },
+    "PREPROCESS_SCHEME": "poly",
     "PREPROCESS_OPTIONS": {
         "degree": 2,
         "interaction_only": true,

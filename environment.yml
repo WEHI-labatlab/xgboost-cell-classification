@@ -1,0 +1,13 @@
+name: xgboost-cell-classification
+channels:
+- conda-forge
+- defaults
+dependencies:
+- xgboost=1.6.2
+- scikit-learn=1.1.1
+- scikit-optimize=0.9.0
+- imbalanced-learn=0.9.1
+- matplotlib=3.5.3
+- ipykernel=6.9.1
+- pandas=1.4.4
+- seaborn=0.11.2
